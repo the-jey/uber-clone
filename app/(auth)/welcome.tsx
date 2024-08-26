@@ -12,7 +12,7 @@ const Welcome = () => {
   const isLastSlide = activeIndex === onboarding.length - 1;
 
   return (
-    <SafeAreaView className='flex h-full items-center justify-between bg-white'>
+    <SafeAreaView className='flex h-full items-center justify-between bg-white pb-3'>
       <TouchableOpacity
         onPress={() => router.replace("/(auth)/sign-up")}
         className='w-full flex justify-end items-end p-5'
