@@ -3,6 +3,7 @@ import { useUser } from '@clerk/clerk-expo'
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as Location from "expo-location"
+import { router } from 'expo-router'
 
 import { useLocationStore } from '@/store'
 import { icons, images } from '@/constants'
@@ -135,16 +136,19 @@ export default function Page() {
       setUserLocation({
         latitude: location.coords?.latitude,
         longitude: location?.coords?.longitude,
-        address: `${address[0].name}, ${address[0].region}`
+        address: `${address[0].streetNumber} ${address[0].street}, ${address[0].city}, ${address[0].isoCountryCode}`
       });
     };
 
     requestLocation();
-  }, [])
+  }, [setUserLocation])
 
-  const handleSignOut = () => { }
 
-  const handleDestinationPress = () => { }
+  const handleSignOut = () => { };
+  const handleDestinationPress = (location: { latitude: number, longitude: number, address: string }) => {
+    setDestinationLocation(location);
+    router.push("/(root)/find-ride");
+  };
 
   return (
     <SafeAreaView>
