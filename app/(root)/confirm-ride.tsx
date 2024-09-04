@@ -13,7 +13,7 @@ const ConfirmRide = () => {
     <RideLayout title='Choose a driver' snapPoints={['65%', '85%']}>
       <FlatList
         data={drivers}
-        renderItem={({ item }) => <DriverCard item={item} selected={selectedDriver!} setSelected={() => setSelectedDriver(item.id!)} />}
+        renderItem={({ item }) => <DriverCard item={item} selected={selectedDriver!} setSelected={() => setSelectedDriver(Number(item.id!))} />}
         ListFooterComponent={() => (
           <View className="mx-5 m-&0">
             <CustomButton
